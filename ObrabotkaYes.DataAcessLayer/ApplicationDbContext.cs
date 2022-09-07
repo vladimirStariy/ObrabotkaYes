@@ -37,6 +37,20 @@ namespace ObrabotkaYes.DataAcessLayer
                 builder.Property(x => x.User_ID).ValueGeneratedOnAdd();
                 builder.Property(x => x.Password).IsRequired();
                 builder.Property(x => x.Login).HasMaxLength(50).IsRequired();
+
+                builder.HasOne(x => x.Profile)
+                    .WithOne(x => x.User)
+                    .HasPrincipalKey<User>(x => x.User_ID)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            modelBuilder.Entity<Profile>(builder =>
+            {
+                builder.ToTable("Profiles").HasKey(x => x.Profile_ID);
+
+                builder.Property(x => x.Profile_ID).ValueGeneratedOnAdd();
+
+                builder.Property(x => x.Login);
             });
         }
     }

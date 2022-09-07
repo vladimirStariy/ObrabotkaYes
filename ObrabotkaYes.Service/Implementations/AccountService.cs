@@ -30,6 +30,17 @@ namespace ObrabotkaYes.Service.Implementations
             _logger = logger;
         }
 
+        private ClaimsIdentity Authenticate(User user)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
+            };
+            return new ClaimsIdentity(claims, "ApplicationCookie",
+                ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+        }
+
         public async Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model)
         {
             try
@@ -50,11 +61,11 @@ namespace ObrabotkaYes.Service.Implementations
                         Description = "Неверный пароль или логин"
                     };
                 }
-                var result = ""/*Authenticate(user)*/;
+                var result = Authenticate(user);
 
                 return new BaseResponse<ClaimsIdentity>()
                 {
-                    Result = null, // result,
+                    Result = result,
                     StatusCode = StatusCode.OK
                 };
             }
