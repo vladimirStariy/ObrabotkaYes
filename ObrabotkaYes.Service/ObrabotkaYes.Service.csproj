@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ObrabotkaYes.DataAcessLayer\ObrabotkaYes.DataAcessLayer.csproj" />
+    <ProjectReference Include="..\ObrabotkaYes.Domain\ObrabotkaYes.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
