@@ -107,11 +107,11 @@ namespace ObrabotkaYes.Service.Implementations
 
                 await _userRepository.Create(user);
                 await _profileRepository.Create(profile);
-                var result = "Authenticate";
+                var result = Authenticate(user);
 
                 return new BaseResponse<ClaimsIdentity>()
                 {
-                    Result = null,
+                    Result = result,
                     Description = "Объект добавился",
                     StatusCode = StatusCode.OK
                 };

@@ -8,5 +8,6 @@ namespace ObrabotkaYes.Service.Interfaces
 {
     public interface IUserService
     {
+
     }
 }

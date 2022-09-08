@@ -19,6 +19,8 @@ namespace ObrabotkaYes.DataAcessLayer
 
         public DbSet<User>? Users { get; set; }
         public DbSet<Profile>? Profiles { get; set; }
+        public DbSet<Order>? Orders { get; set; }
+        public DbSet<OrderPicture>? OrderPictures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,6 +53,19 @@ namespace ObrabotkaYes.DataAcessLayer
                 builder.Property(x => x.Profile_ID).ValueGeneratedOnAdd();
 
                 builder.Property(x => x.Login);
+            });
+
+            modelBuilder.Entity<Order>(builder =>
+            {
+                builder.ToTable("Orders").HasKey(x => x.Order_ID);
+                builder.Property(x => x.Order_ID).ValueGeneratedOnAdd();
+                builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+            });
+
+            modelBuilder.Entity<OrderPicture>(builder =>
+            {
+                builder.ToTable("OrderPictures").HasKey(x => x.OrderPicture_ID);
+                builder.Property(x => x.OrderPicture_ID).ValueGeneratedOnAdd();
             });
         }
     }

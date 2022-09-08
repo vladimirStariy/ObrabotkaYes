@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObrabotkaYes.Domain.Entity
+namespace ObrabotkaYes.Domain.ViewModels
 {
-    public class Order
+    public class OrderViewModel
     {
-        public uint Order_ID { get; set; }
         public string Name { get; set; }
+        public int OrderId { get; set; }
     }
 }

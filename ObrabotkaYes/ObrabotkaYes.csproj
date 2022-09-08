@@ -20,4 +20,8 @@
     <ProjectReference Include="..\ObrabotkaYes.Service\ObrabotkaYes.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
 </Project>
