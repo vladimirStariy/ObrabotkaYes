@@ -1,0 +1,71 @@
+﻿@model List<ObrabotkaYes.Domain.Entity.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Заказы</h1>
+
+<p>
+    <a class="btn btn-info" asp-controller="Order" asp-action="OrderAdd">Разместить заказ</a>
+</p>
+
+@if(Model == null)
+{
+    
+}
+else
+{
+    foreach (var item in Model)
+    {
+        <div class="card">
+          <div class="card-header">
+            Заказ № @item.Order_ID от @item.PublicationDate.Day/@item.PublicationDate.Month/@item.PublicationDate.Year
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">@item.Name</h5>
+            <p class="card-text">@item.Description</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+          <div class="card-footer text-muted">
+            Здесь будут теги категорий
+          </div>
+        </div>
+        <br />
+    } 
+}
+
+
+
+
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Наименование
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@

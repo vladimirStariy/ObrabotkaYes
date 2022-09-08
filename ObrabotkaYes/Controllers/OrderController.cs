@@ -19,7 +19,7 @@ namespace ObrabotkaYes.Controllers
             var response = _orderService.GetOrders();
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
-                return PartialView(response.Result);
+                return View("Orders", response.Result);
             }
             return View("Error", $"{response.Description}");
         }

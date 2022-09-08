@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObrabotkaYes.Domain.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace ObrabotkaYes.Domain.ViewModels
 {
     public class OrderViewModel
     {
+        public int Order_ID { get; set; }
         public string Name { get; set; }
-        public int OrderId { get; set; }
+
+
     }
 }

@@ -77,7 +77,14 @@ namespace ObrabotkaYes.Service.Implementations
             try 
             {
                 var orders = _orderRepository.GetAll().ToList();
-                if(!orders.Any())
+                if (_orderPictureRepository.GetAll().Count() != 0)
+                {
+                    foreach (var item in orders)
+                    {
+                        item.OrderPictures = _orderPictureRepository.GetAll().Where(x => x.Order_ID == item.Order_ID).ToList();
+                    }
+                }
+                if (!orders.Any())
                 {
                     return new BaseResponse<List<Order>>()
                     {
@@ -100,6 +107,11 @@ namespace ObrabotkaYes.Service.Implementations
                     StatusCode = StatusCode.InternalServerError
                 };
             }
+        }
+
+        public IBaseResponce<List<OrderViewModel>> GetOrdersView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

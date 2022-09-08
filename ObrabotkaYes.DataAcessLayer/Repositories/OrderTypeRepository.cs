@@ -8,31 +8,32 @@ using System.Threading.Tasks;
 
 namespace ObrabotkaYes.DataAcessLayer.Repositories
 {
-    public class CategoryRepository : IBaseRepository<Category>
+    public class OrderTypeRepository : IBaseRepository<OrderType>
     {
         private readonly ApplicationDbContext _db;
 
-        public CategoryRepository(ApplicationDbContext db)
+        public OrderTypeRepository(ApplicationDbContext db)
         {
             _db = db;
         }
 
-        public Task Create(Category entity)
+        public async Task Create(OrderType entity)
+        {
+            await _db.OrderTypes.AddAsync(entity);
+            await _db.SaveChangesAsync();
+        }
+
+        public Task Delete(OrderType entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(Category entity)
+        public IQueryable<OrderType> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<Category> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Category> Update(Category entity)
+        public Task<OrderType> Update(OrderType entity)
         {
             throw new NotImplementedException();
         }

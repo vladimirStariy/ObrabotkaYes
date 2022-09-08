@@ -21,6 +21,8 @@ namespace ObrabotkaYes.DataAcessLayer
         public DbSet<Profile>? Profiles { get; set; }
         public DbSet<Order>? Orders { get; set; }
         public DbSet<OrderPicture>? OrderPictures { get; set; }
+        public DbSet<Category>? Categories { get; set; }
+        public DbSet<OrderType>? OrderTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,12 +62,26 @@ namespace ObrabotkaYes.DataAcessLayer
                 builder.ToTable("Orders").HasKey(x => x.Order_ID);
                 builder.Property(x => x.Order_ID).ValueGeneratedOnAdd();
                 builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+                builder.Property(x => x.Description).IsRequired();
+                builder.Property(x => x.Phone).HasMaxLength(50).IsRequired();
             });
 
             modelBuilder.Entity<OrderPicture>(builder =>
             {
                 builder.ToTable("OrderPictures").HasKey(x => x.OrderPicture_ID);
                 builder.Property(x => x.OrderPicture_ID).ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Category>(builder =>
+            {
+                builder.ToTable("Categories").HasKey(x => x.Category_ID);
+                builder.Property(x => x.Category_ID).ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<OrderType>(builder =>
+            {
+                builder.ToTable("OrderTypes").HasKey(x => x.Type_ID);
+                builder.Property(x => x.Type_ID).ValueGeneratedOnAdd();
             });
         }
     }
