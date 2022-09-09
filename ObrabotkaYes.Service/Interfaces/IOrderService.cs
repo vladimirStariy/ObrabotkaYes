@@ -12,7 +12,7 @@ namespace ObrabotkaYes.Service.Interfaces
 {
     public interface IOrderService
     {
-        Task<IBaseResponce<Order>> Create(OrderViewModel model, IFormFileCollection uploads);
+        Task<IBaseResponce<Order>> Create(OrderViewModel model);
         IBaseResponce<List<Order>> GetOrders();
         IBaseResponce<List<OrderViewModel>> GetOrdersView();
     }

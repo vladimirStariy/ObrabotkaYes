@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Hosting;
 using ObrabotkaYes.DataAcessLayer.Interfaces;
 using ObrabotkaYes.Domain.Entity;
 using ObrabotkaYes.Domain.Enum;
 using ObrabotkaYes.Domain.Response;
 using ObrabotkaYes.Domain.ViewModels;
 using ObrabotkaYes.Service.Interfaces;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,30 +22,41 @@ namespace ObrabotkaYes.Service.Implementations
         private readonly ILogger<OrderService> _logger;
         private readonly IBaseRepository<Order> _orderRepository;
         private readonly IBaseRepository<OrderPicture> _orderPictureRepository;
+        IHostingEnvironment _appEnvironment;
 
-        public OrderService(ILogger<OrderService> logger, IBaseRepository<Order> orderRepository, IBaseRepository<OrderPicture> orderPictureRepository)
+        public OrderService(ILogger<OrderService> logger, IBaseRepository<Order> orderRepository, 
+            IBaseRepository<OrderPicture> orderPictureRepository, IHostingEnvironment appEnvironment)
         {
             _logger = logger;
             _orderRepository = orderRepository;
             _orderPictureRepository = orderPictureRepository;
+            _appEnvironment = appEnvironment;
         }
 
-        public async Task<IBaseResponce<Order>> Create(OrderViewModel model, IFormFileCollection uploads)
+        public async Task<IBaseResponce<Order>> Create(OrderViewModel model)
         {
             try 
             {
                 var order = new Order()
                 {
-                    Name = model.Name
+                    Name = model.Name,
+                    Description = model.Description,
+                    Phone = model.Phone,
+                    PublicationDate = DateTime.Now,
+                    Type_ID = model.Type_ID
                 };
 
                 await _orderRepository.Create(order);
 
-                if(uploads.Count != 0)
+                if(model.Uploads.Count > 0)
                 {
-                    foreach (var item in uploads)
+                    foreach (var item in model.Uploads)
                     {
                         string path = "/Images/" + item.FileName;
+                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                        {
+                            await item.CopyToAsync(fileStream);
+                        }
                         var orderPicture = new OrderPicture()
                         {
                             Order_ID = order.Order_ID,

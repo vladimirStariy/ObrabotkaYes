@@ -10,5 +10,7 @@ namespace ObrabotkaYes.Domain.Entity
     {
         public uint Type_ID { get; set; }
         public string Name { get; set; }
+
+        public List<Order> Orders { get; set; }
     }
 }

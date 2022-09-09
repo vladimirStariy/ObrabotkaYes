@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace ObrabotkaYes.Domain.Entity
         public string Phone { get; set; }
         public string Name { get; set; }
         public DateTime PublicationDate { get; set; }
+
         public uint Type_ID { get; set; }
+        [ForeignKey("Type_ID")]
         public OrderType OrderType { get; set; }
 
         public virtual ICollection<OrderPicture> OrderPictures { get; set; }

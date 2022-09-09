@@ -30,7 +30,7 @@ namespace ObrabotkaYes.DataAcessLayer.Repositories
 
         public IQueryable<OrderType> GetAll()
         {
-            throw new NotImplementedException();
+            return _db.OrderTypes;
         }
 
         public Task<OrderType> Update(OrderType entity)

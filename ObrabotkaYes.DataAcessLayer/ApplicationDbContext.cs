@@ -64,6 +64,7 @@ namespace ObrabotkaYes.DataAcessLayer
                 builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
                 builder.Property(x => x.Description).IsRequired();
                 builder.Property(x => x.Phone).HasMaxLength(50).IsRequired();
+
             });
 
             modelBuilder.Entity<OrderPicture>(builder =>

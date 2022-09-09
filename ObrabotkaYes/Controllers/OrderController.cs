@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ObrabotkaYes.Domain.ViewModels;
 using ObrabotkaYes.Service.Interfaces;
 
@@ -7,10 +8,12 @@ namespace ObrabotkaYes.Controllers
     public class OrderController : Controller
     {
         private readonly IOrderService _orderService;
+        private readonly IOrderTypesService _orderTypesService;
 
-        public OrderController (IOrderService orderService)
+        public OrderController(IOrderService orderService, IOrderTypesService orderTypesService)
         {
             _orderService = orderService;
+            _orderTypesService = orderTypesService;
         }
 
         [HttpGet]
@@ -25,15 +28,17 @@ namespace ObrabotkaYes.Controllers
         }
 
         [HttpGet]
-        public IActionResult OrderAdd()
+        public async Task<IActionResult> OrderAdd()
         {
+            var response = _orderTypesService.GetAll();
+            ViewBag.OrderTypes = new SelectList(response.Result, "Type_ID", "Name");
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> OrderAdd(OrderViewModel model, IFormFileCollection uploads)
+        public async Task<IActionResult> OrderAdd(OrderViewModel model)
         {
-            var response = await _orderService.Create(model, uploads);
+            var response = await _orderService.Create(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
                 return RedirectToAction("Index", "Home");
