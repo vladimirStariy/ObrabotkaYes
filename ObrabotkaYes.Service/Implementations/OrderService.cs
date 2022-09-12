@@ -22,14 +22,20 @@ namespace ObrabotkaYes.Service.Implementations
         private readonly ILogger<OrderService> _logger;
         private readonly IBaseRepository<Order> _orderRepository;
         private readonly IBaseRepository<OrderPicture> _orderPictureRepository;
+        private readonly IBaseRepository<Category> _categoryRepository;
         IHostingEnvironment _appEnvironment;
 
-        public OrderService(ILogger<OrderService> logger, IBaseRepository<Order> orderRepository, 
-            IBaseRepository<OrderPicture> orderPictureRepository, IHostingEnvironment appEnvironment)
+        public OrderService(
+            ILogger<OrderService> logger, 
+            IBaseRepository<Order> orderRepository, 
+            IBaseRepository<OrderPicture> orderPictureRepository, 
+            IBaseRepository<Category> categoryRepository,
+            IHostingEnvironment appEnvironment)
         {
             _logger = logger;
             _orderRepository = orderRepository;
             _orderPictureRepository = orderPictureRepository;
+            _categoryRepository = categoryRepository;
             _appEnvironment = appEnvironment;
         }
 

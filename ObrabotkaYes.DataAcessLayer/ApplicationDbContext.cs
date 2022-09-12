@@ -77,6 +77,8 @@ namespace ObrabotkaYes.DataAcessLayer
             {
                 builder.ToTable("Categories").HasKey(x => x.Category_ID);
                 builder.Property(x => x.Category_ID).ValueGeneratedOnAdd();
+                builder.HasMany(x => x.Orders)
+                       .WithMany(x => x.Categories);
             });
 
             modelBuilder.Entity<OrderType>(builder =>

@@ -29,7 +29,7 @@ namespace ObrabotkaYes.DataAcessLayer.Repositories
 
         public IQueryable<Category> GetAll()
         {
-            throw new NotImplementedException();
+            return _db.Categories;
         }
 
         public Task<Category> Update(Category entity)

@@ -10,5 +10,7 @@ namespace ObrabotkaYes.Domain.Entity
     {
         public uint Category_ID { get; set; }
         public string Name { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

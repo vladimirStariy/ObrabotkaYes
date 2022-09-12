@@ -4,6 +4,11 @@
     ViewData["Title"] = "OrderAdd";
 }
 
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+
+
 <h1>OrderAdd</h1>
 
 <h4>OrderViewModel</h4>
@@ -17,29 +22,47 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Type_ID" class="control-label"></label>
                 <select class="form-control" asp-for="Type_ID" asp-items="@ViewBag.OrderTypes"></select>
                 <span asp-validation-for="Type_ID" class="text-danger"></span>
             </div>
+            <br />
+            <div class="form-group">
+                <div class="justify-content-center align-items-center">
+                    <div class="">
+                        <label asp-for="Categories" class="control-label"></label>
+                        <select 
+                            asp-for="Categories" 
+                            asp-items="@ViewBag.Categories" 
+                            name="skills" 
+                            multiple="" 
+                            class="label ui selection fluid dropdown">
+                        </select>
+                        <span asp-validation-for="Categories" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Phone" class="control-label"></label>
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Uploads" class="control-label"></label>
                 <input asp-for="Uploads" type="file" name="uploads" multiple /><br>
                 <span asp-validation-for="Uploads" class="text-danger"></span>
             </div>
-
-            
-
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -47,10 +70,11 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/selector/js/jquery.min.js"></script>
+    <script src="~/selector/js/popper.js"></script>
+    <script src="~/selector/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+    <script src="~/selector/js/main.js"></script>
 }

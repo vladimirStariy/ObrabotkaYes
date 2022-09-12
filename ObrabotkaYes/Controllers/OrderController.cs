@@ -9,11 +9,13 @@ namespace ObrabotkaYes.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IOrderTypesService _orderTypesService;
+        private readonly ICategoryService _categoryService;
 
-        public OrderController(IOrderService orderService, IOrderTypesService orderTypesService)
+        public OrderController(IOrderService orderService, IOrderTypesService orderTypesService, ICategoryService categoryService)
         {
             _orderService = orderService;
             _orderTypesService = orderTypesService;
+            _categoryService = categoryService;
         }
 
         [HttpGet]
@@ -30,8 +32,10 @@ namespace ObrabotkaYes.Controllers
         [HttpGet]
         public async Task<IActionResult> OrderAdd()
         {
-            var response = _orderTypesService.GetAll();
-            ViewBag.OrderTypes = new SelectList(response.Result, "Type_ID", "Name");
+            var responseTypes = _orderTypesService.GetAll();
+            ViewBag.OrderTypes = new SelectList(responseTypes.Result, "Type_ID", "Name");
+            var responseCategories = _categoryService.GetCategories();
+            ViewBag.Categories = new SelectList(responseCategories.Result, "Category_ID", "Name");
             return View();
         }
 

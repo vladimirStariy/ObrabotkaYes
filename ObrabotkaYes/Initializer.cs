@@ -15,6 +15,7 @@ namespace ObrabotkaYes
             services.AddScoped<IBaseRepository<Profile>, ProfileRepository>();
             services.AddScoped<IBaseRepository<OrderPicture>, OrderPictureRepository>();
             services.AddScoped<IBaseRepository<OrderType>, OrderTypeRepository>();
+            services.AddScoped<IBaseRepository<Category>, CategoryRepository>();
             services.AddScoped<IBaseRepository<Order>, OrderRepository>();
 
         }
@@ -25,6 +26,7 @@ namespace ObrabotkaYes
             //services.AddScoped<IUserService, UserService>();
             services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<IOrderTypesService, OrderTypesService>();
+            services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IOrderService, OrderService>();
         }
     }
