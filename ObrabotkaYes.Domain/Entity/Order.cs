@@ -21,5 +21,9 @@ namespace ObrabotkaYes.Domain.Entity
 
         public virtual ICollection<OrderPicture> OrderPictures { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
+        public Order()
+        {
+            Categories = new List<Category>();
+        }
     }
 }

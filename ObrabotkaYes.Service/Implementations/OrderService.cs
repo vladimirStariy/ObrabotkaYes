@@ -14,6 +14,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ObrabotkaYes.Service.Implementations
 {
@@ -43,13 +44,20 @@ namespace ObrabotkaYes.Service.Implementations
         {
             try 
             {
+                List<Category> _categories = new List<Category>();
+                foreach (var category_id in model.Categories)
+                {
+                    var cat = _categoryRepository.GetAll().ToList().Where(x => x.Category_ID == category_id);
+                    _categories.Add(cat.FirstOrDefault());
+                }
                 var order = new Order()
                 {
                     Name = model.Name,
                     Description = model.Description,
                     Phone = model.Phone,
                     PublicationDate = DateTime.Now,
-                    Type_ID = model.Type_ID
+                    Type_ID = model.Type_ID,
+                    Categories = _categories
                 };
 
                 await _orderRepository.Create(order);
@@ -103,6 +111,10 @@ namespace ObrabotkaYes.Service.Implementations
                         item.OrderPictures = _orderPictureRepository.GetAll().Where(x => x.Order_ID == item.Order_ID).ToList();
                     }
                 }
+                //foreach(var cat in orders)
+                //{
+                //    cat.Categories = _categoryRepository.GetAll().Where
+                //}
                 if (!orders.Any())
                 {
                     return new BaseResponse<List<Order>>()

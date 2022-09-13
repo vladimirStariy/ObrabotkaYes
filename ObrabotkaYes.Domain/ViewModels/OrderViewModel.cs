@@ -17,7 +17,7 @@ namespace ObrabotkaYes.Domain.ViewModels
         public string Phone { get; set; }
         public DateTime PublicationDate { get; set; }
         public uint Type_ID { get; set; }
-        public ICollection <Category> Categories { get; set; }
+        public ICollection <uint> Categories { get; set; }
         public IFormFileCollection Uploads { get; set; }
     }
 }
