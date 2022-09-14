@@ -47,8 +47,8 @@ namespace ObrabotkaYes.Service.Implementations
                 List<Category> _categories = new List<Category>();
                 foreach (var category_id in model.Categories)
                 {
-                    var cat = _categoryRepository.GetAll().ToList().Where(x => x.Category_ID == category_id);
-                    _categories.Add(cat.FirstOrDefault());
+                    var cat = _categoryRepository.GetAll().ToList().Find(x => x.Category_ID == category_id);
+                    _categories.Add(cat);
                 }
                 var order = new Order()
                 {
@@ -104,17 +104,6 @@ namespace ObrabotkaYes.Service.Implementations
             try 
             {
                 var orders = _orderRepository.GetAll().ToList();
-                if (_orderPictureRepository.GetAll().Count() != 0)
-                {
-                    foreach (var item in orders)
-                    {
-                        item.OrderPictures = _orderPictureRepository.GetAll().Where(x => x.Order_ID == item.Order_ID).ToList();
-                    }
-                }             
-                foreach (var cat in orders)
-                {
-                    
-                }
                 if (!orders.Any())
                 {
                     return new BaseResponse<List<Order>>()
@@ -123,7 +112,6 @@ namespace ObrabotkaYes.Service.Implementations
                         StatusCode = StatusCode.OK
                     };
                 }
-
                 return new BaseResponse<List<Order>>()
                 {
                     Result = orders,
