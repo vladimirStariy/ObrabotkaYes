@@ -17,13 +17,9 @@ namespace ObrabotkaYes.Domain.Entity
 
         public uint Type_ID { get; set; }
         [ForeignKey("Type_ID")]
-        public OrderType OrderType { get; set; }
+        public virtual OrderType OrderType { get; set; }
 
         public virtual ICollection<OrderPicture> OrderPictures { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
-        public Order()
-        {
-            Categories = new List<Category>();
-        }
     }
 }

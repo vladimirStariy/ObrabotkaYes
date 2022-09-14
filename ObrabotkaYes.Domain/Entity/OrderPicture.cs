@@ -15,6 +15,6 @@ namespace ObrabotkaYes.Domain.Entity
 
         public uint Order_ID { get; set; }
         [ForeignKey("Order_ID")]
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

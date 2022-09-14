@@ -110,11 +110,11 @@ namespace ObrabotkaYes.Service.Implementations
                     {
                         item.OrderPictures = _orderPictureRepository.GetAll().Where(x => x.Order_ID == item.Order_ID).ToList();
                     }
+                }             
+                foreach (var cat in orders)
+                {
+                    
                 }
-                //foreach(var cat in orders)
-                //{
-                //    cat.Categories = _categoryRepository.GetAll().Where
-                //}
                 if (!orders.Any())
                 {
                     return new BaseResponse<List<Order>>()
