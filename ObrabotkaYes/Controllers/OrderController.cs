@@ -40,8 +40,9 @@ namespace ObrabotkaYes.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> OrderAdd(OrderViewModel model)
+        public async Task<IActionResult> OrderAdd(OrderViewModel model, List<IFormFile> files)
         {
+            Console.WriteLine(Request.Form);
             var response = await _orderService.Create(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {
