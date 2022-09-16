@@ -5,6 +5,7 @@ using ObrabotkaYes.Domain.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,8 @@ namespace ObrabotkaYes.DataAcessLayer
         public DbSet<OrderPicture>? OrderPictures { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<OrderType> OrderTypes { get; set; }
+        public DbSet<Operation> Operations { get; set; }
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,9 +54,7 @@ namespace ObrabotkaYes.DataAcessLayer
             modelBuilder.Entity<Profile>(builder =>
             {
                 builder.ToTable("Profiles").HasKey(x => x.Profile_ID);
-
                 builder.Property(x => x.Profile_ID).ValueGeneratedOnAdd();
-
                 builder.Property(x => x.Login);
             });
 
@@ -85,6 +86,21 @@ namespace ObrabotkaYes.DataAcessLayer
             {
                 builder.ToTable("OrderTypes").HasKey(x => x.Type_ID);
                 builder.Property(x => x.Type_ID).ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Company>(builder =>
+            {
+                builder.ToTable("Companies").HasKey(x => x.Company_ID);
+                builder.Property(x => x.Company_ID).ValueGeneratedOnAdd();
+                builder.HasMany(x => x.Operations)
+                       .WithMany(x => x.Companies)
+                       .UsingEntity(x => x.ToTable("CompanyOperations"));
+            });
+
+            modelBuilder.Entity<Operation>(builder =>
+            {
+                builder.ToTable("Operations").HasKey(x => x.Operation_ID);
+                builder.Property(x => x.Operation_ID).ValueGeneratedOnAdd();
             });
         }
     }

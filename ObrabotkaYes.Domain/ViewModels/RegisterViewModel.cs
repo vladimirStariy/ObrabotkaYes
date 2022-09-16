@@ -10,5 +10,9 @@ namespace ObrabotkaYes.Domain.ViewModels
     {
         public string Login { get; set; }
         public string Password { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyAddress { get; set; }
+        public string CompanyPhone { get; set; }
+        public string CompanyEmail { get; set; }
     }
 }

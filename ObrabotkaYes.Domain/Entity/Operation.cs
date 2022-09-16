@@ -8,5 +8,10 @@ namespace ObrabotkaYes.Domain.Entity
 {
     public class Operation
     {
+        public uint Operation_ID { get; set; }
+        public string Name { get; set; }
+        public string ImagePath { get; set; } 
+
+        public virtual ICollection<Company> Companies { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace ObrabotkaYes.Domain.Entity
         public string Login { get; set; }
         public string Password { get; set; }
         public Role Role { get; set; }
+
+        public virtual Company? Company { get; set; }
         public virtual Profile Profile { get; set; }
     }
 }
