@@ -54,6 +54,11 @@
             </div>
             <br />
 
+            <form method="post" action="/submit-mortgage" enctype="multipart/form-data" class="dropzone" id="myId">
+                <div class="fallback">
+                    <input asp-for="Uploads" type="file" multiple />
+                </div>
+            </form>
             <div class="dropzone" id="dropzone-form" name="mainFileUploader">
                 <div class="fallback">
                     <input asp-for="Uploads" type="file" multiple />
