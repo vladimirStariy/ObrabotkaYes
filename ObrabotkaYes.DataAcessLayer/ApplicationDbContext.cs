@@ -86,6 +86,7 @@ namespace ObrabotkaYes.DataAcessLayer
                 builder.ToTable("OrderTypes").HasKey(x => x.Type_ID);
                 builder.Property(x => x.Type_ID).ValueGeneratedOnAdd();
             });
+
         }
     }
 }

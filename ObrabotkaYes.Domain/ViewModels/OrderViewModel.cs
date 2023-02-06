@@ -18,6 +18,6 @@ namespace ObrabotkaYes.Domain.ViewModels
         public DateTime PublicationDate { get; set; }
         public uint Type_ID { get; set; }
         public ICollection <uint> Categories { get; set; }
-        public IFormFileCollection Uploads { get; set; }
+        public List<IFormFile> Uploads { get; set; }
     }
 }

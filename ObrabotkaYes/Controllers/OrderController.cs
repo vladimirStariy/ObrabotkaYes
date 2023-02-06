@@ -43,6 +43,7 @@ namespace ObrabotkaYes.Controllers
         public async Task<IActionResult> OrderAdd(OrderViewModel model, List<IFormFile> files)
         {
             Console.WriteLine(Request.Form);
+            model.Uploads = files;
             var response = await _orderService.Create(model);
             if (response.StatusCode == Domain.Enum.StatusCode.OK)
             {

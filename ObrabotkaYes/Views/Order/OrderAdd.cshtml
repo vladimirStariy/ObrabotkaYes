@@ -53,39 +53,14 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <br />
-
-            <form method="post" action="/submit-mortgage" enctype="multipart/form-data" class="dropzone" id="myId">
-                <div class="fallback">
-                    <input asp-for="Uploads" type="file" multiple />
-                </div>
-            </form>
-            <div class="dropzone" id="dropzone-form" name="mainFileUploader">
+            <div class="dropzone" id="dropzone-form" action="Order/OrderAdd" name="mainFileUploader">
                 <div class="fallback">
                     <input asp-for="Uploads" type="file" multiple />
                 </div>
             </div>
-
-@*            <div id="imageUpload" class="dropzone">
-                <input name="file" type="file" multiple />
-            </div>*@
-            @*<div class="form-group">
-                <label class="control-label" for="first-name">
-                    Upload Photo <span class="required">*</span>
-                </label>
-                <div class="" id="dropzone">
-                    <div action="/stock/Upload" class="dropzone" id="uploader">
-                    </div>
-                </div>
-            </div>*@
-@*            <div class="previews"></div>
-            <div class="form-group">
-                <label asp-for="Uploads" class="control-label"></label>
-                <input class="form-control" asp-for="Uploads" type="file" name="uploads" multiple /><br>
-                <span asp-validation-for="Uploads" class="text-danger"></span>
-            </div>*@
             <br />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input value="Create" type="" id="submit-all" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -93,7 +68,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/Scripts/dropzone.min.js"></script>
+    
     <script src="~/selector/js/jquery.min.js"></script>
     <script src="~/selector/js/popper.js"></script>
     <script src="~/selector/js/bootstrap.min.js"></script>
@@ -101,53 +76,58 @@
     <script src="~/selector/js/main.js"></script>
     <link rel="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
-    <script>
+
     <script type="text/javascript">
-            Dropzone.options.dropzoneForm = {
+        Dropzone.options.dropzoneForm = {
             url: "/Order/OrderAdd",
-                paramName: "file",
-                    autoProcessQueue: false,
-                        uploadMultiple: true,
-                            parallelUploads: 100,
-                                maxFiles: 100,
-                                    acceptedFiles: "image/*",
-                                        init: function () {
+            paramName: "file", 
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 100,
+            acceptedFiles: "image/*",
+            init: function () {
 
-                                            var submitButton = document.querySelector("#submit-all");
-                                            var wrapperThis = this;
+                var submitButton = document.querySelector("#submit-all");
+                var wrapperThis = this;
 
-                                            submitButton.addEventListener("click", function () {
-                                                wrapperThis.processQueue();
-                                            });
+                submitButton.addEventListener("click", function () {
+                    wrapperThis.processQueue();
+                });
 
-                                            this.on("addedfile", function (file) {
+                this.on("addedfile", function (file) {
 
-                                                // Create the remove button
-                                                var removeButton = Dropzone.createElement("<button class='btn btn-lg dark'>Remove File</button>");
+                    // Create the remove button
+                    var removeButton = Dropzone.createElement("<button class='btn btn-lg dark'>Удалить</button>");
 
-                                                // Listen to the click event
-                                                removeButton.addEventListener("click", function (e) {
-                                                    // Make sure the button click doesn't submit the form:
-                                                    e.preventDefault();
-                                                    e.stopPropagation();
+                    // Listen to the click event
+                    removeButton.addEventListener("click", function (e) {
+                        // Make sure the button click doesn't submit the form:
+                        e.preventDefault();
+                        e.stopPropagation();
 
-                                                    // Remove the file preview.
-                                                    wrapperThis.removeFile(file);
-                                                    // If you want to the delete the file on the server as well,
-                                                    // you can do the AJAX request here.
-                                                });
+                        // Remove the file preview.
+                        wrapperThis.removeFile(file);
+                        // If you want to the delete the file on the server as well,
+                        // you can do the AJAX request here.
+                    });
 
-                                                // Add the button to the file preview element.
-                                                file.previewElement.appendChild(removeButton);
-                                            });
-                                            this.on("sending", function (file, response, formData) {
-                                                formData.append("Name", $("#Name").val());
-                                                formData.append("Files", file);
-                                            });
-                                            //this.on('sendingmultiple', function (data, xhr, formData) {
-                                            //    formData.append("Name", $("#Name").val());
-                                            //});
-                                        }
+                    // Add the button to the file preview element.
+                    file.previewElement.appendChild(removeButton);
+                });
+                this.on("sending", function (file, response, formData) {
+                    formData.append("Name", $("#Name").val());
+                    formData.append("Type_ID", $("#Type_ID").val());
+                    formData.append("Phone", $("#Phone").val());
+                    formData.append("Categories", $("#Categories").val());
+                    formData.append("Description", $("#Description").val());
+                    formData.append("Files", file); 
+                });
+                //this.on('sendingmultiple', function (data, xhr, formData) {
+                //    formData.append("Name", $("#Name").val());
+                //});
+            }
         };
     </script>
+
 }
