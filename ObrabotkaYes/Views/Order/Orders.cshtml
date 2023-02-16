@@ -4,11 +4,25 @@
     ViewData["Title"] = "Orders";
 }
 
-<h1>Заказы</h1>
+<style>
+    .row-container {
+      display: grid;
+      grid-template-columns: 1.5fr 0.5fr;
+      grid-template-rows: 1fr;
+      gap: 10px 10px;
+      grid-template-areas:
+        ". .";
+    }
+</style>
 
-<p>
-    <a class="btn btn-info" asp-controller="Order" asp-action="OrderAdd">Разместить заказ</a>
-</p>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Заказы</li>
+    </ol>
+</nav>
+
+<h1>Заказы</h1>
 
 @if(Model == null)
 {
@@ -16,31 +30,72 @@
 }
 else
 {
-    foreach (var item in Model)
-    {
-        <div class="card">
-          <div class="card-header">
-            Заказ № @item.Order_ID от @item.PublicationDate.Day/@item.PublicationDate.Month/@item.PublicationDate.Year
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">@item.Name</h5>
-            <p class="card-text">@item.Description</p>
-            @if(item.OrderPictures != null)
-            {
-                foreach(var img in item.OrderPictures)
+    <div class="row-container">
+        <div class="col">
+            <div class="d-grid">
+                <a class="btn btn-dark" asp-controller="Order" asp-action="OrderAdd">Разместить заказ</a>
+            </div>
+            <div class="list-group mb-3">
+                @foreach (var item in Model)
                 {
-                    <img src="@img.ImagePath" height="150" width="100"/>
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"><a href="#" style="text-decoration: none">@item.Name</a></h5>
+                            <small>@item.PublicationDate.Day/@item.PublicationDate.Month/@item.PublicationDate.Year</small>
+                        </div>
+                        <p class="mb-1">@item.Description</p>
+                        <small>
+                            @foreach (var cat in item.Categories)
+                            {
+                                <a href="#" style="text-decoration: none" class="badge bg-dark">@cat.Name</a>
+                            }
+                        </small>
+                    </div>
                 }
-            }
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-          <div class="card-footer text-muted">
-            @foreach(var cat in item.Categories)
-            {
-                <a>@cat.Name</a>
-            }
-          </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link link-primary" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <br />
-    } 
+
+        <div class="col">
+            <form>
+                <div class="card text-center">
+                    <div class="btn btn-dark">
+                        ФИЛЬТР
+                    </div>
+                    <div class="card-body">
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary active" aria-current="page">Активные</a>
+                            <a href="#" class="btn btn-primary">Архивные</a>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" placeholder="name" />
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" placeholder="name" />
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" placeholder="name" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
 }

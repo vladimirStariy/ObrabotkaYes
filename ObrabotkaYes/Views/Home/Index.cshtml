@@ -2,120 +2,75 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+     .hero-container {
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 10px 10px;
+      grid-template-areas:
+        ". .";
+      justify-items: center;
+      width: 100%;
+      height: 50%;
+    }
+</style>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/">
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+        </div>
+        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+    <div class="text-bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 py-3">
+            <h2 class="display-5">Another headline</h2>
+            <p class="lead">And an even wittier subheading.</p>
+        </div>
+        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+    </div>
+</div>
+
+<div class="hero-container">
+  
+</div>
+
+<div class="container" >
+    
+</div>
+
+
 <div class="container" style="width: 100%; background-color: white;">
     <h1 class="pt-5 text-center mx-auto" style="font-size: 28px">MetalWork.by - платформа для размещения и поиска заказов в сфере металообработки.</h1>
-
-    <div class="container row justify-content-center">
-        <div class="col-sm ">
-            <div class="px-5 pt-5 pb-1 my-5 text-center bg-light rounded">
-                <h1 class="display-4 fw-bold" style="font-size: 32px">Я ЯВЛЯЮСЬ ЗАКАЗЧИКОМ</h1>
-                <div class="mx-auto">
-                    <p class="lead mb-4" style="font-size: 19px">Разместите заказ на изготовление изделий из металла и получайте лучшие предложения по цене и качеству из своего региона</p>
-                
-                </div>
-            </div>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">РАЗМЕСТИТЬ</button>
-            </div>
-        </div>
-
-        <div class="col-sm">
-            <div class="px-5 pt-5 pb-1 my-5 text-center  bg-light">
-                <h1 class="display-4 fw-bold" style="font-size: 32px">Я ЯВЛЯЮСЬ ИСПОЛНИТЕЛЕМ</h1>
-                <div class="mx-auto">
-                    <p class="lead mb-4" style="font-size: 19px">Добавьте ваше предложение на сайт, укажите оказываемые услуги и получайте заявки на изготовление на прямую, без тендеров, закупок и посредников</p>
-                </div>
-            </div>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">ДОБАВИТЬ</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="container row justify-content-center">
-        <div class="col pb-4 pr-0">
-            <div class="card" style="width: 24rem;">
-              <img src="https://www.novochag.ru/upload/img_cache/20a/20a1dbc01926f789c01c371113377c27_ce_2370x1580x0x0.jpg" class="card-img-top" alt="...">
-              <a href="#" class="btn btn-primary rounded-0">Card link</a>
-            </div>
-        </div>
-        <div class="col pb-4">
-            <div class="card" style="width: 24rem;">
-              <img src="https://www.novochag.ru/upload/img_cache/20a/20a1dbc01926f789c01c371113377c27_ce_2370x1580x0x0.jpg" class="card-img-top" alt="...">
-              <a href="#" class="btn btn-primary rounded-0">Card link</a>
-            </div>
-        </div>
-        <div class="col pb-4">
-            <div class="card" style="width: 24rem;">
-              <img src="https://www.novochag.ru/upload/img_cache/20a/20a1dbc01926f789c01c371113377c27_ce_2370x1580x0x0.jpg" class="card-img-top" alt="...">
-              <a href="#" class="btn btn-primary rounded-0">Card link</a>
-            </div>
-        </div>
-
-        <div class="col pb-4 pr-0">
-            <a href="#">
-                <div class="card d-flex" style="width: 24rem;">
-                  <img src="https://www.novochag.ru/upload/img_cache/20a/20a1dbc01926f789c01c371113377c27_ce_2370x1580x0x0.jpg" class="card-img" alt="...">
-                  <div class="card-img-overlay d-flex">
-                    <h5 class="card-title align-self-center mx-auto" style="color: red; font-size: 30px;">Card title</h5>
-                  </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col pb-4 pr-0">
-            <a href="#">
-                <div class="card d-flex" style="width: 24rem;">
-                  <img src="https://www.novochag.ru/upload/img_cache/20a/20a1dbc01926f789c01c371113377c27_ce_2370x1580x0x0.jpg" class="card-img" alt="...">
-                  <div class="card-img-overlay d-flex">
-                    <h5 class="card-title align-self-center mx-auto" style="color: red; font-size: 30px;">Card title</h5>
-                  </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col pb-4 pr-0">
-            <a href="#">
-                <div class="card d-flex" style="width: 24rem;">
-                  <img src="https://www.novochag.ru/upload/img_cache/20a/20a1dbc01926f789c01c371113377c27_ce_2370x1580x0x0.jpg" class="card-img" alt="...">
-                  <div class="card-img-overlay d-flex">
-                    <h5 class="card-title align-self-center mx-auto" style="color: red; font-size: 30px;">Card title</h5>
-                  </div>
-                </div>
-            </a>
-        </div>
-    </div>
+    
+    
+    
 
     <div class="container row justify-content-center">
         <div class="col">
-            <h1>Список хуйни 1</h1>
+            <h1>Актуальных заказов @ViewBag.Orders.Count</h1>
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Краткое описание</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td></td>
-                    </tr>
+                    @foreach(var item in ViewBag.Orders)
+                    {
+                        <tr>
+                            <th scope="row">@item.Order_ID</th>
+                            <td>@item.Name</td>
+                            <td><a href="#" class="btn btn-primary">Перейти</a></td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -136,17 +91,6 @@
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
                         <td></td>
                     </tr>
                 </tbody>
@@ -171,21 +115,8 @@
                         <td>Otto</td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td></td>
-                    </tr>
                 </tbody>
             </table>
         </div>
-
-        
     </div>
 </div>
