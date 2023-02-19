@@ -50,6 +50,10 @@ else
                                 <a href="#" style="text-decoration: none" class="badge bg-dark">@cat.Name</a>
                             }
                         </small>
+                        @foreach(var img in item.OrderPictures)
+                        {
+                            <img src="@img.ImagePath"/>
+                        }
                     </div>
                 }
             </div>
