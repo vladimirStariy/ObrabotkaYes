@@ -1,0 +1,123 @@
+﻿@model ObrabotkaYes.Domain.ViewModels.OrderViewModel
+
+@{
+    ViewData["Title"] = "OrderAdd";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.css">
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+<h1>OrderAdd</h1>
+
+<h4>OrderViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="OrderAdd" id="upload-form" class="well dropzone" method="post" enctype="multipart/form-data">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" type="text"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Type_ID" class="control-label"></label>
+                <select class="form-select" asp-for="Type_ID" asp-items="@ViewBag.OrderTypes"></select>
+                <span asp-validation-for="Type_ID" class="text-danger"></span>
+            </div>
+            
+            <div class="input-group mb-3">
+                <label asp-for="Categories" class="control-label"></label>
+                <select 
+                    class="form-select label ui selection fluid dropdown"
+                    asp-for="Categories" 
+                    asp-items="@ViewBag.Categories" 
+                    multiple=""
+                    placeholder="asdas"
+                >
+                </select>
+                <span asp-validation-for="Categories" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" data-input/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" style="height: 200px"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="previews"></div>
+
+            <div class="form-group">
+                <input value="Create" type="submit" class="btn btn-primary" />
+            </div>
+        </form>
+
+        @*<form id="upload-form" class="well dropzone" asp-action="OrderAdd" method="post" enctype="multipart/form-data">
+              <!-- this is were the previews should be shown. -->
+              
+        </form>*@
+        
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script src="~/selector/js/jquery.min.js"></script>
+    <script src="~/selector/js/popper.js"></script>
+    <script src="~/selector/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.13/dist/semantic.min.js"></script>
+    <script src="~/selector/js/main.js"></script>
+    
+    <script>
+        Dropzone.options.uploadForm = { // The camelized version of the ID of the form element
+
+          // The configuration we've talked about above
+          autoProcessQueue: false,
+          uploadMultiple: true,
+          parallelUploads: 100,
+          maxFiles: 100,
+
+          // The setting up of the dropzone
+          init: function() {
+            var myDropzone = this;
+
+            // First change the button to actually tell Dropzone to process the queue.
+            this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+              // Make sure that the form isn't actually being sent.
+              e.preventDefault();
+              e.stopPropagation();
+              myDropzone.processQueue();
+            });
+
+            // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+            // of the sending event because uploadMultiple is set to true.
+            this.on("sendingmultiple", function() {
+              // Gets triggered when the form is actually being sent.
+              // Hide the success button or the complete form.
+            });
+            this.on("successmultiple", function(files, response) {
+              // Gets triggered when the files have successfully been sent.
+              // Redirect user or notify of success.
+            });
+            this.on("errormultiple", function(files, response) {
+              // Gets triggered when there was an error sending the files.
+              // Maybe show form again, and notify user of error
+            });
+          }
+ 
+        }
+    </script>
+}

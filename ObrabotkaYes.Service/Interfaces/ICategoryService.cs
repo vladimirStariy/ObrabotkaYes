@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ObrabotkaYes.Domain.Entity;
+using ObrabotkaYes.Domain.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace ObrabotkaYes.Service.Interfaces
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
+        IBaseResponce<List<Category>> GetCategories();
     }
 }
