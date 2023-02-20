@@ -24,28 +24,28 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 pb-5">
-			<div class="shadow jumbotron bg-light text-center pt-3 px-3 py-3">
-				<h2 class="display-5">
+			<div class="shadow jumbotron bg-dark text-center pt-3 px-5 py-3">
+				<h2 class="display-5" style="color: white;">
 					Я ЗАКАЗЧИК
 				</h2>
-				<p class="lead">
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+				<p class="lead" style="color: white;">
+					Разместите заказ на изготовление изделий из металла и получайте лучшие предложения по цене и качеству из своего региона
 				</p>
 				<p>
-					<a class="btn btn-dark btn-large" href="#">РАЗМЕСТИТЬ ЗАКАЗ</a>
+					<a class="btn btn-warning btn-large" href="#">РАЗМЕСТИТЬ ЗАКАЗ</a>
 				</p>
 			</div>
 		</div>
 		<div class="col-md-6 pb-5">
-			<div class="shadow jumbotron bg-light text-center pt-3 px-3 py-3">
-				<h2 class="display-5">
+			<div class="shadow jumbotron bg-dark text-center pt-3 px-5 py-3">
+				<h2 class="display-5" style="color: white;">
 					Я ИСПОЛНИТЕЛЬ
 				</h2>
-				<p class="lead">
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+				<p class="lead" style="color: white;">
+					Добавьте ваше предприятие на сайт, укажите оказываемые услуги и получайте заявки на изготовление на прямую, без тендеров, закупок и посредников
 				</p>
 				<p>
-					<a class="btn btn-dark btn-large" href="#">ОПУБЛИКОВАТЬ</a>
+					<a class="btn btn-warning btn-large" href="#">ОПУБЛИКОВАТЬ</a>
 				</p>
 			</div>
 		</div>
@@ -56,10 +56,25 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-3 pb-4">
+        @for(int i = 0; i < 8; i++)
+        {
+            <div class="col-md-3 pb-4">
             <div class="shadow">
+                  <div class="card-body">
+                    <h5 class="card-title">Фрезерные работы</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                  </div>
+                </div>
+            </div>
+        }
+        
+
+        @*<div class="col-md-3">
+            <div class="shadow" >
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Резка металла</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -70,18 +85,7 @@
         <div class="col-md-3">
             <div class="shadow" >
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="shadow" >
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Гибка металла</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -92,7 +96,7 @@
         <div class="col-md-3">
             <div class="shadow">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Гальваника</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -103,7 +107,7 @@
         <div class="col-md-3">
             <div class="shadow">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Металлообработка</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -114,7 +118,7 @@
         <div class="col-md-3">
             <div class="shadow">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Зубообработка</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -125,7 +129,7 @@
         <div class="col-md-3">
             <div class="shadow">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Металоконструкции</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
@@ -136,14 +140,14 @@
         <div class="col-md-3">
             <div class="shadow">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">Все категории</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a>
               </div>
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 
 <div class="container-fluid">
@@ -164,11 +168,14 @@
                         <tr>
                             <th scope="row">@item.Order_ID</th>
                             <td>@item.Name</td>
-                            <td><a href="#" class="btn btn-primary">Перейти</a></td>
+                            <td class="align-content-lg-end"><a href="#" class="link-primary" style="text-decoration: none;">Перейти</a></td>
                         </tr>
                     }
+                    
                 </tbody>
+                
             </table>
+            <a href="#" class="form-control btn btn-warning">Перейти</a>
         </div>
 
         <div class="col-md-6">
