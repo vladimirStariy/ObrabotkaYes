@@ -153,7 +153,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1>Актуальных заказов @ViewBag.Orders.Count</h1>
+            <h1>Актуальных заказов</h1>
             <table class="table">
                 <thead class="table-dark">
                     <tr>
@@ -163,14 +163,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach(var item in ViewBag.Orders)
+                    @*@foreach(var item in ViewBag.Orders)
                     {
                         <tr>
                             <th scope="row">@item.Order_ID</th>
                             <td>@item.Name</td>
                             <td class="align-content-lg-end"><a href="#" class="link-primary" style="text-decoration: none;">Перейти</a></td>
                         </tr>
-                    }
+                    }*@
                     
                 </tbody>
                 

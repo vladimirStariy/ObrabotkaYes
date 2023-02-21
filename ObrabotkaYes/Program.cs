@@ -46,6 +46,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "AdminArea",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

@@ -17,9 +17,10 @@ namespace ObrabotkaYes.DataAcessLayer.Repositories
             _db = db;
         }
 
-        public Task Create(Category entity)
+        public async Task Create(Category entity)
         {
-            throw new NotImplementedException();
+            await _db.Categories.AddAsync(entity);
+            await _db.SaveChangesAsync();
         }
 
         public Task Delete(Category entity)

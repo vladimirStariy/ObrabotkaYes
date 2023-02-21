@@ -4,6 +4,7 @@ using ObrabotkaYes.DataAcessLayer.Repositories;
 using ObrabotkaYes.Domain.Entity;
 using ObrabotkaYes.Domain.Enum;
 using ObrabotkaYes.Domain.Response;
+using ObrabotkaYes.Domain.ViewModels;
 using ObrabotkaYes.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,36 @@ namespace ObrabotkaYes.Service.Implementations
         {
             _logger = logger;
             _categoryRepository = categoryRepository;
+        }
+
+        public async Task<IBaseResponce<Category>> Create(CategoryViewModel model)
+        {
+            try
+            {
+                var category = new Category()
+                {
+                    Name = model.Name,
+                    Description = model.Description
+                };
+
+                await _categoryRepository.Create(category);
+
+                return new BaseResponse<Category>()
+                {
+                    Result = category,
+                    Description = "Объект добавлен",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"[CategoryService.Create] error: {ex.Message}");
+                return new BaseResponse<Category>()
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = $"Внутренняя ошибка: {ex.Message}"
+                };
+            }
         }
 
         public IBaseResponce<List<Category>> GetCategories()

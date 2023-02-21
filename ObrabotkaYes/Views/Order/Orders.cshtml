@@ -26,7 +26,13 @@
 
 @if(Model == null)
 {
-    
+    <div class="row-container">
+        <div class="col">
+            <div class="d-grid">
+                <a class="btn btn-dark" asp-controller="Order" asp-action="OrderAdd">Разместить заказ</a>
+            </div>
+        </div>
+    </div>
 }
 else
 {
